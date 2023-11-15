@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="small_text_size">16sp</dimen>
+    <dimen name="medium_text_size">18sp</dimen>
+    <dimen name="medium_large_text_size">20sp</dimen>
+    <dimen name="large_text_size">22sp</dimen>
+    <dimen name="extra_large_text_size">26sp</dimen>
+
+    <dimen name="super_tiny_margin">2dp</dimen>
+    <dimen name="tiny_margin">8dp</dimen>
+    <dimen name="small_margin">12dp</dimen>
+    <dimen name="medium_margin">16dp</dimen>
+    <dimen name="large_margin">20dp</dimen>
+    <dimen name="extra_large_margin">32dp</dimen>
+
+    <dimen name="corner_radius_small">16dp</dimen>
+    <dimen name="corner_radius_medium">32dp</dimen>
+    <dimen name="corner_radius_big">64dp</dimen>
+
+    <dimen name="small_rectangle">60dp</dimen>
+    <dimen name="medium_rectangle">80dp</dimen>
+    <dimen name="large_rectangle">100dp</dimen>
+    <dimen name="extra_large_rectangle">120dp</dimen>
+
+    <dimen name="cardWidth">400dp</dimen>
+</resources>

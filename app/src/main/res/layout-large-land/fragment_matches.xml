@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.fragments.MatchesFragment">
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="showNoUpcoming"
+            type="Boolean" />
+        <variable
+            name="showNoPrevious"
+            type="Boolean" />
+
+    </data>
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/matchesLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:baselineAligned="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/small_margin"
+                    android:layout_marginTop="@dimen/small_margin"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="@string/upcoming_matches"
+                    android:textSize="@dimen/medium_large_text_size" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/upcomingRecycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/medium_margin"
+                    android:orientation="vertical"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+                <TextView
+                    android:id="@+id/noUpcoming"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/large_margin"
+                    android:layout_marginTop="@dimen/extra_large_margin"
+                    android:layout_marginEnd="@dimen/large_margin"
+                    android:layout_marginBottom="@dimen/extra_large_margin"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/no_upcoming_match"
+                    android:textAlignment="center"
+                    android:textSize="@dimen/medium_text_size"
+                    android:visibility="@{showNoUpcoming ? View.VISIBLE : View.GONE}" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/small_margin"
+                    android:layout_marginTop="@dimen/small_margin"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/previous_matches"
+                    android:textSize="@dimen/medium_large_text_size" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/prevousRecycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/medium_margin"
+                    android:orientation="vertical"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+                <TextView
+                    android:id="@+id/noPrevious"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/large_margin"
+                    android:layout_marginTop="@dimen/extra_large_margin"
+                    android:layout_marginEnd="@dimen/large_margin"
+                    android:layout_marginBottom="@dimen/extra_large_margin"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/no_previous_match"
+                    android:textAlignment="center"
+                    android:textSize="@dimen/medium_text_size"
+                    android:visibility="@{showNoPrevious ? View.VISIBLE : View.GONE}" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</layout>

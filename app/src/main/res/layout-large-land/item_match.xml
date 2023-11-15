@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="com.jobaer.example.utils.Utils"/>
+        <import type="android.view.View"/>
+        <variable
+            name="match"
+            type="com.jobaer.example.models.Match" />
+        <variable
+            name="handler"
+            type="com.jobaer.example.ui.adapters.MatchClickHandler" />
+        <variable
+            name="position"
+            type="Integer" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/small_margin"
+        app:cardCornerRadius="@dimen/corner_radius_medium"
+        app:contentPadding="@dimen/medium_margin">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_medium"
+                android:text="@{Utils.INSTANCE.convertDate(match.date)}"
+                android:textAlignment="center"
+                android:textSize="@dimen/medium_text_size" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/small_margin"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/medium_margin"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="center"
+                    android:lines="2"
+                    android:text="@{match.home}"
+                    android:textAlignment="center"
+                    android:textSize="@dimen/medium_large_text_size" />
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/vs"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/medium_margin"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="center"
+                    android:lines="2"
+                    android:text="@{match.away}"
+                    android:textAlignment="center"
+                    android:textSize="@dimen/medium_large_text_size" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/small_margin"
+                android:fontFamily="@font/roboto_bold"
+                android:text="@string/winner"
+                android:textAlignment="center"
+                android:textSize="@dimen/medium_text_size"
+                android:visibility="@{match.winner !=null &amp;&amp; !match.winner.isEmpty() ? View.VISIBLE : View.GONE}" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/tiny_margin"
+                android:layout_marginEnd="@dimen/small_margin"
+                android:layout_weight="1"
+                android:fontFamily="@font/roboto_bold"
+                android:text="@{match.winner !=null &amp;&amp; !match.winner.isEmpty() ? match.winner : @string/empty_string}"
+                android:textAlignment="center"
+                android:textSize="@dimen/medium_large_text_size"
+                android:visibility="@{match.winner !=null &amp;&amp; !match.winner.isEmpty() ? View.VISIBLE : View.GONE}" />
+
+            <Button
+                android:id="@+id/notifyMe"
+                style="@style/ShapeAppearanceOverlay.Material3.Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/small_margin"
+                android:enabled="@{!match.notificationSet}"
+                android:onClick="@{() -> handler.onNotification(position,match)}"
+                android:text="@string/notify_me"
+                android:textColor="@color/white"
+                android:visibility="@{match.winner == null || match.winner.isEmpty() ? View.VISIBLE : View.GONE}" />
+
+            <Button
+                android:id="@+id/viewHighlight"
+                style="@style/ShapeAppearanceOverlay.Material3.Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/small_margin"
+                android:onClick="@{() -> handler.onWatchHighlightView(match)}"
+                android:text="@string/watch_highlights"
+                android:textColor="@color/white"
+                android:visibility="@{match.winner != null &amp;&amp; !match.winner.isEmpty() ? View.VISIBLE : View.GONE}" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

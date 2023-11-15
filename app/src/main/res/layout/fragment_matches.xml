@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.fragments.MatchesFragment">
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="showNoUpcoming"
+            type="Boolean" />
+        <variable
+            name="showNoPrevious"
+            type="Boolean" />
+    </data>
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/matchesLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/medium_margin"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView2">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/upcomingRecycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager">
+
+                </androidx.recyclerview.widget.RecyclerView>
+
+                <TextView
+                    android:id="@+id/noUpcoming"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/large_margin"
+                    android:layout_marginTop="@dimen/extra_large_margin"
+                    android:layout_marginEnd="@dimen/large_margin"
+                    android:layout_marginBottom="@dimen/extra_large_margin"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/no_upcoming_match"
+                    android:textAlignment="center"
+                    android:textSize="@dimen/medium_text_size"
+                    android:visibility="@{showNoUpcoming ? View.VISIBLE : View.GONE}" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/medium_margin"
+                android:layout_marginTop="@dimen/small_margin"
+                android:fontFamily="@font/roboto_bold"
+                android:text="@string/upcoming_matches"
+                android:textSize="@dimen/medium_large_text_size"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/medium_margin"
+                android:layout_marginTop="@dimen/medium_margin"
+                android:fontFamily="@font/roboto_bold"
+                android:text="@string/previous_matches"
+                android:textSize="@dimen/medium_large_text_size"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/medium_margin"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView3">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/prevousRecycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+                <TextView
+                    android:id="@+id/noPrevious"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/large_margin"
+                    android:layout_marginTop="@dimen/extra_large_margin"
+                    android:layout_marginEnd="@dimen/large_margin"
+                    android:layout_marginBottom="@dimen/extra_large_margin"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/no_previous_match"
+                    android:textAlignment="center"
+                    android:textSize="@dimen/medium_text_size"
+                    android:visibility="@{showNoPrevious ? View.VISIBLE : View.GONE}" />
+
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</layout>
