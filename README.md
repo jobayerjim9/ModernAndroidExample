@@ -122,3 +122,6 @@ Contributions are welcome! Feel free to:
 ---
 
 ### ⭐ **Don't forget to star this repository if you found it helpful!**
+
+// CI/CD configuration added
+
