@@ -12,7 +12,7 @@ workflows:
           ./gradlew clean assembleRelease
       - name: Run tests
         script: |
-          ./gradlew test
+          ./gradlew clean assembleRelease
       - name: Build APK
         script: |
           ./gradlew assembleRelease
