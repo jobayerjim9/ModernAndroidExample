@@ -1,0 +1,35 @@
+# codemagic.yaml
+workflows:
+  beta_distribution:
+    name: Beta Build and Distribution
+    environment:
+      vars:
+        # Firebase App Distribution token (securely saved in Codemagic env variable)
+        FIREBASE_TOKEN: Encrypted("YOUR_FIREBASE_TOKEN_HERE")
+        # Optionally, define other environment variables such as project ID, app ID etc.
+        FIREBASE_APP_ID: "your-firebase-app-id"  # Found in your Firebase console.
+    scripts:
+      - name: Install dependencies
+        script: |
+          ./gradlew clean assembleRelease
+      - name: Run tests
+        script: |
+          ./gradlew test
+      - name: Build APK
+        script: |
+          ./gradlew assembleRelease
+      - name: Distribute via Firebase App Distribution
+        script: |
+          # Install Firebase CLI if not already available (or use pre-installed version)
+          npm install -g firebase-tools
+          firebase appdistribution:distribute app/build/outputs/apk/release/app-release.apk \
+            --app $FIREBASE_APP_ID \
+            --groups "Beta Testers" \
+            --token $FIREBASE_TOKEN \
+            --release-notes "Automated build from Codemagic"
+    artifacts:
+      - app/build/outputs/apk/release/app-release.apk
+    publishing:
+      scripts:
+        - echo "Beta build and distribution completed successfully."
+
